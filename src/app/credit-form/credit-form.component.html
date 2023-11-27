@@ -1,0 +1,45 @@
+<!-- credit-form.component.html -->
+<div class="credit-form">
+  <h2>Solicitação de Crédito</h2>
+  <form (ngSubmit)="onSubmit()" #form="ngForm">
+    <div class="form-group">
+      <label for="credit-amount">Valor do Crédito:</label>
+      <input type="number" id="credit-amount" [(ngModel)]="creditAmount" name="creditAmount" required min="0" step="1000">
+    </div>
+
+    <div class="form-group">
+      <label for="credit-type">Tipo de Crédito:</label>
+      <select id="credit-type" [(ngModel)]="creditType" name="creditType" required>
+        <option value="" disabled selected>Selecione o Tipo</option>
+        <option value="1">Crédito Direto</option>
+        <option value="2">Crédito Consignado</option>
+        <option value="3">Crédito Pessoa Jurídica</option>
+        <option value="4">Crédito Pessoa Física</option>
+        <option value="5">Crédito Imobiliário</option>
+      </select>
+    </div>
+
+    <div class="credit-form" [ngClass]="{ 'invalid-form': form.invalid && form.dirty }">
+    </div>
+
+    <div class="form-group">
+      <label for="installments">Quantidade de Parcelas:</label>
+      <input type="number" id="installments" [(ngModel)]="installments" name="installments" required min="5" max="72">
+    </div>
+
+    <div class="form-group">
+      <label for="due-date">Data do Primeiro Vencimento:</label>
+      <input type="date" id="due-date" [(ngModel)]="firstDueDate" name="firstDueDate" required
+             [min]="minDate" [max]="maxDate">
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">Processar Crédito</button>
+  </form>
+
+  <div class="result" *ngIf="resultAvailable">
+    <h2>Resultado:</h2>
+    <p>Status do Crédito: {{ result.Status }}</p>
+    <p>Valor Total com Juros: {{ result.TotalWithInterest }}</p>
+    <p>Valor dos Juros: {{ result.InterestAmount }}</p>
+  </div>
+</div>

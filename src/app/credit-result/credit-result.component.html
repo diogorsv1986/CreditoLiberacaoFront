@@ -1,0 +1,7 @@
+<!-- credit-result.component.html -->
+<div [@fadeInOut]="resultAvailable ? 'true' : 'false'" class="result" *ngIf="result">
+  <h2>Resultado:</h2>
+  <p>Status do Crédito: {{ result.Status }}</p>
+  <p>Valor Total com Juros: {{ result.TotalWithInterest }}</p>
+  <p>Valor dos Juros: {{ result.InterestAmount }}</p>
+</div>

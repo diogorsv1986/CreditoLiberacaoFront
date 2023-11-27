@@ -1,0 +1,15 @@
+/* credit-result.component.css */
+.result {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+}
+
+  .result.ng-enter,
+  .result.ng-leave {
+    transition: opacity 0.4s ease-in-out;
+  }
+
+    .result.ng-enter,
+    .result.ng-leave.ng-leave-active {
+      opacity: 0;
+    }
